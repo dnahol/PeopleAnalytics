@@ -1,0 +1,2 @@
+class BannerPerson < ApplicationRecord
+end
