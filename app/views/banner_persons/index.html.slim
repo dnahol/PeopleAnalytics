@@ -4,3 +4,11 @@
   .banner-persons-container
     br
     | May the odds be ever in your favor 💅
+    - if @banner_persons.any?
+      table#items
+        - for bp in @banner_persons
+          tr
+            td.id = bp.id
+    - else
+      p No items found. Please add some inventory.
+        Thank you!

@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190531045952) do
+ActiveRecord::Schema.define(version: 20190614052207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "advisements", force: :cascade do |t|
+    t.date "date"
+    t.integer "units"
+  end
 
   create_table "banner_people", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,6 +26,40 @@ ActiveRecord::Schema.define(version: 20190531045952) do
   end
 
   create_table "banner_persons", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "image"
+    t.index ["first_name"], name: "index_banner_persons_on_first_name"
+    t.index ["last_name"], name: "index_banner_persons_on_last_name"
+  end
+
+  create_table "handouts", force: :cascade do |t|
+    t.date "date"
+    t.integer "units"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.integer "loyalty_range", array: true
+  end
+
+  create_table "loyalty_points", force: :cascade do |t|
+    t.date "date"
+    t.integer "pts"
+    t.index ["date"], name: "index_loyalty_points_on_date"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "house_id"
+    t.bigint "banner_person_id"
+    t.boolean "active"
+    t.string "hsid"
+    t.date "date_added"
+    t.date "date_left"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_memberships_on_active"
+    t.index ["banner_person_id"], name: "index_memberships_on_banner_person_id"
+    t.index ["house_id"], name: "index_memberships_on_house_id"
   end
 
 end
