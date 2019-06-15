@@ -21,16 +21,11 @@ ActiveRecord::Schema.define(version: 20190614052207) do
   end
 
   create_table "banner_people", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "banner_persons", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "image"
-    t.index ["first_name"], name: "index_banner_persons_on_first_name"
-    t.index ["last_name"], name: "index_banner_persons_on_last_name"
+    t.index ["first_name"], name: "index_banner_people_on_first_name"
+    t.index ["last_name"], name: "index_banner_people_on_last_name"
   end
 
   create_table "handouts", force: :cascade do |t|
@@ -39,6 +34,7 @@ ActiveRecord::Schema.define(version: 20190614052207) do
   end
 
   create_table "houses", force: :cascade do |t|
+    t.string "name"
     t.integer "loyalty_range", array: true
   end
 

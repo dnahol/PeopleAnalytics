@@ -21,7 +21,7 @@ gem 'title'
 gem 'uglifier'
 
 gem 'bootsnap'
-gem 'faker'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'high_voltage'

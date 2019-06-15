@@ -8,8 +8,6 @@
       table#items
         - for bp in @banner_people
           tr
-            td.pic
-              img alt="person's picture" src=bp.image height="90" width="90"/
             td.id = bp.id
             td.last_name = bp.last_name
             td.first_name = bp.first_name

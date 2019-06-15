@@ -1,6 +1,7 @@
 class BannerPersonsController < ApplicationController
   def index
-    @banner_persons = BannerPerson.all
+    @banner_people = BannerPerson.all
+    @houses = House.all
   end
   def show
   end
