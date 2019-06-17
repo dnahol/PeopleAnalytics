@@ -1,0 +1,17 @@
+.center(style="text-align: center;")
+  img(src='https://media.giphy.com/media/26DOs997h6fgsCthu/giphy.gif')
+
+  .loyalty_points-container
+    br
+    | May the odds be ever in your favor 💅
+    - if @LPs.any?
+      table#items
+        - for l in @LPs
+          tr
+            td.id = l.id
+            td.date = l.date
+            td.hsid = l.membership.hsid
+            td.pts = l.pts
+    - else
+      p No items found. Please add some Memberships.
+        Thank you!

@@ -1,3 +1,3 @@
 class Advisement < ApplicationRecord
-  belongs_to :memebership
+  belongs_to :membership
 end

@@ -1,6 +1,6 @@
 .center(style="text-align: center;")
-  img(src='https://media.giphy.com/media/26DOs997h6fgsCthu/giphy.gif')
-
+  br
+  | highcharts type: https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/combo-dual-axes/
   .banner-persons-container
     br
     | May the odds be ever in your favor 💅
@@ -34,6 +34,30 @@
             - for bp in h.banner_people
               td.first = bp.first_name
               td.last = bp.last_name
+    - else
+      p No items found. Please add some Banner People.
+        Thank you!
+
+  .membership-container
+    br
+    | May the odds be ever in your favor 💅
+    - if @houses.any?
+      table#items
+        - for h in @houses
+          tr
+            td.hid = h.id
+            td.name = h.name
+            td.ms = h.memberships.length
+            - for m in h.memberships
+              tr
+                td.mid = m.id
+                td.hsid = m.hsid
+              tr
+                td.bfn = m.banner_person.first_name
+                td.bln = m.banner_person.last_name
+                td.active = m.active
+                td.da = "#{m.date_added}"
+                td.dl = m.date_left
     - else
       p No items found. Please add some Banner People.
         Thank you!

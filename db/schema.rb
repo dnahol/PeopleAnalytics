@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 20190614052207) do
   enable_extension "plpgsql"
 
   create_table "advisements", force: :cascade do |t|
+    t.bigint "membership_id"
     t.date "date"
     t.integer "units"
+    t.index ["membership_id"], name: "index_advisements_on_membership_id"
   end
 
   create_table "banner_people", force: :cascade do |t|
@@ -29,8 +31,10 @@ ActiveRecord::Schema.define(version: 20190614052207) do
   end
 
   create_table "handouts", force: :cascade do |t|
+    t.bigint "membership_id"
     t.date "date"
     t.integer "units"
+    t.index ["membership_id"], name: "index_handouts_on_membership_id"
   end
 
   create_table "houses", force: :cascade do |t|
@@ -39,9 +43,11 @@ ActiveRecord::Schema.define(version: 20190614052207) do
   end
 
   create_table "loyalty_points", force: :cascade do |t|
+    t.bigint "membership_id"
     t.date "date"
     t.integer "pts"
     t.index ["date"], name: "index_loyalty_points_on_date"
+    t.index ["membership_id"], name: "index_loyalty_points_on_membership_id"
   end
 
   create_table "memberships", force: :cascade do |t|
