@@ -1,20 +1,14 @@
 .center(style="text-align: center;")
-  img(src='https://media.giphy.com/media/26DOs997h6fgsCthu/giphy.gif')
-
-  .memberships-container
-    br
-    | May the odds be ever in your favor 💅
-    - if @memberships.any?
-      table#items
-        - for m in @memberships
-          tr
-            td.id = m.id
-            td.hsid = m.hsid
-            td.active = m.active
-            td.dateAdded = m.date_added
-            td.bpname = m.banner_person.last_name
-            - for h in m.banner_person.houses
-              td.bphouse = h.name
-    - else
-      p No items found. Please add some Memberships.
-        Thank you!
+  .handouts-container
+  - if @handouts.any?
+    table#items
+      - for h in @handouts
+        tr
+          td.date = h.date
+          td.id = h.id
+          td.hsid = h.membership.hsid
+          td.hsid = h.membership.house.name
+          td.name = h.membership.banner_person.last_name
+  - else
+    p No items found. Please add some Memberships.
+      Thank you!

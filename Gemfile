@@ -3,13 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem "highcharts-rails"
+gem 'materialize-sass', '~> 1.0.0'
+
 gem 'autoprefixer-rails', '~> 8.5.0'
 
 gem 'flutie'
-gem 'jquery-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'pg'
 gem 'puma'
+gem 'jquery-rails'
 
 gem 'rack-canonical-host'
 gem 'rails', '~> 5.1.6.2'
@@ -31,6 +34,8 @@ gem 'gon'
 gem 'responders'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
+gem 'rails-ujs'
+
 gem 'turbolinks'
 
 gem 'pry-awesome_print'
