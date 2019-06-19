@@ -5,7 +5,7 @@ class BannerPersonsController < ApplicationController
     @houses = House.all
   end
   def show
-    @banner_person 
+    @banner_person = BannerPerson.find(params[:id]) 
   end
   def update
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190614052207) do
+ActiveRecord::Schema.define(version: 20190619000359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20190614052207) do
     t.bigint "membership_id"
     t.date "date"
     t.integer "units"
+    t.decimal "accepted"
     t.index ["membership_id"], name: "index_advisements_on_membership_id"
   end
 

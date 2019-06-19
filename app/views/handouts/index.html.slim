@@ -5,10 +5,8 @@
       - for h in @handouts
         tr
           td.date = h.date
-          td.id = h.id
-          td.hsid = h.membership.hsid
-          td.hsid = h.membership.house.name
-          td.name = h.membership.banner_person.last_name
+          td.units = h.units
+          td.person = h.membership.banner_person.last_name
   - else
     p No items found. Please add some Memberships.
       Thank you!

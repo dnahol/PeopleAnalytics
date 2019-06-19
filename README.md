@@ -127,6 +127,13 @@ Enhanced view mode. Decide the best way to edit a given date's Advisement. It's
 an open-ended edit/update. See the example row structures below.
 
 **NB:** The example tables will help explain, in particular, how to calculate
+ "One clarification that we've sent to other candidates recently:
+
+ % Accepted is the percentage of Advisements the house actually listened to for
+ units of Handouts to give to the BannerPerson. An Advisement is considered
+ accepted if a Handout matches the Advisement during that time frame."
+ -Divya C.
+
 **% Accepted**.
 
 ##### Enhanced view mode:
