@@ -1,6 +1,15 @@
 .center(style="text-align: center;")
+  | #{@banner_person.first_name} #{@banner_person.last_name}
   #chart-container(style="width:100%; height:400px;")
     javascript:
+      //date conversion from Ruby to JS
+      for(var i = 0; i < gon.handouts.length; i++) {
+        gon.handouts[0] = new Date( gon.handouts[0] )
+      }
+      for(var i = 0; i < gon.pts.length; i++) {
+        gon.pts[0] = new Date( gon.pts[0] )
+      }
+
       document.addEventListener('DOMContentLoaded', function () {
         var myChart = Highcharts.chart('chart-container', {
           chart: {
@@ -10,10 +19,14 @@
               text: 'Loyalty Points and Handouts for January 2019'
           },
           xAxis: [{
-              categories: ['01', '02', '03', '04', '05', '06',
-                  '07', '08', '09', '10', '11', '12', '13', '14', '15', '16',
-                  '17', '18', '19', '20', '21', '22', '23', '24', '25', '26',
-                  '27', '28', '29', '30', '31'],
+              type: 'datetime',
+              dateTimeLabelFormats: {
+                  month: '%e. %b',
+                  year: '%b'
+              },
+              title: {
+                  text: 'Date'
+              },
               crosshair: true
           }],
           yAxis: [{ // Primary yAxis
@@ -46,6 +59,8 @@
           }],
           tooltip: {
               shared: true
+              headerFormat: '<b>{series.name}</b><br>',
+              pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
           },
           legend: {
               layout: 'vertical',
@@ -74,6 +89,30 @@
               tooltip: {
                   valueSuffix: 'pts'
               }
-          }]
+            }
+          ]
         })
       });
+  .handouts-container
+    | Handouts
+  - if @handouts.any?
+    table#items
+      - for h in @handouts
+        tr
+          td.date = h.date
+          td.units = h.units
+  - else
+    p No items found. Please add some Handouts.
+      Thank you!
+
+  .loyalty_points-container
+    | Loyalty Points
+  - if @loyalty_points.any?
+    table#items
+      - for l in @loyalty_points
+        tr
+          td.date = l.date
+          td.units = l.pts
+  - else
+    p No items found. Please add some Loyalty Points.
+      Thank you!
