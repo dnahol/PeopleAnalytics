@@ -93,6 +93,31 @@
           ]
         })
       });
+  .table-container
+    | Enhanced View Mode
+  table#items
+    thead
+      th
+        tr
+          th ID
+          th HSID
+          th LP Date
+          th HT Date
+          th A date
+          th Loyalty
+          th Handouts
+          th Advisements
+    tbody
+      - for r in @table
+        tr
+          td.id = r.id
+          td.hsid = r.hsid
+          td.lpdate = r.lp_date
+          td.htdate = r.ht_date
+          td.adate = r.a_date
+          td.lp = r.lp_pts
+          td.ht = r.ht_units
+          td.a = r.a_units
   .handouts-container
     | Handouts
   - if @handouts.any?
