@@ -3,8 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# The packages I added
 gem "highcharts-rails"
 gem 'materialize-sass', '~> 1.0.0'
+gem "table_print"
 
 gem 'autoprefixer-rails', '~> 8.5.0'
 

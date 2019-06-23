@@ -99,25 +99,25 @@
     thead
       th
         tr
-          th ID
+          th 
+          th Memberhsip ID
+          th Banner Person ID
           th HSID
-          th LP Date
-          th HT Date
-          th A date
-          th Loyalty
+          th Date
+          th Loyalty Points
           th Handouts
           th Advisements
     tbody
-      - for r in @table
+      - @table.each_with_index do |r, i|
         tr
-          td.id = r.id
-          td.hsid = r.hsid
-          td.lpdate = r.lp_date
-          td.htdate = r.ht_date
-          td.adate = r.a_date
-          td.lp = r.lp_pts
-          td.ht = r.ht_units
-          td.a = r.a_units
+          td.i = i
+          td.id = @membership.id
+          td.id = @banner_person.id
+          td.hsid = @membership.house_id
+          td.date = r["cdate"]
+          td.lpts = r["lpts"]
+          td.handouts = r["hunits"]
+          td.advisements = r["aunits"]
   .handouts-container
     | Handouts
   - if @handouts.any?

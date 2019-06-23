@@ -338,6 +338,7 @@ GEM
       unicode_utils (~> 1.4)
     strings-ansi (0.1.0)
     sysexits (1.2.0)
+    table_print (1.5.6)
     temple (0.8.1)
     thor (0.20.3)
     thread_safe (0.3.6)
@@ -433,6 +434,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sprockets (>= 3.0.0)
+  table_print
   title
   turbolinks
   uglifier
