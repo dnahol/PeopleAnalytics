@@ -45,14 +45,22 @@ LoyaltyPoints should be a range of 10.0 pts to 15.0 pts**,
 
 
 #### BannerPerson Show View (Graph)
-Takes up the top portion of the page.
-Requires that some variables pass from Ruby to JavaScript.
-Uses `gon` and `highcharts-rails` gems
+Used `gon` and `highcharts-rails`
+
+
 
 MVP:
   * **Shows every date in January 2019** in X-axis
   * Connected Points: Loyalty points (pts)
   * Bars: Handouts (units)
+
+  Used this example as a guide:
+  2018 Dosis Demo for tracking anemia HB levels against
+  dose of medication
+
+  ![Graph from Demo](/app/assets/images/demoGraph.jpg)
+
+
 
 ```
 
@@ -75,6 +83,8 @@ MVP:
    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 ```
+
+Source:
 
 
 #### BannerPerson Show View (Table)
