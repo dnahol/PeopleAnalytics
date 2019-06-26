@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'houses' => 'houses#index'
   get 'memberships' => 'memberships#index'
   get 'loyalty_points' => 'loyalty_points#index'
+  get 'house_masters/intro' => 'house_masters#intro'
 
 
 

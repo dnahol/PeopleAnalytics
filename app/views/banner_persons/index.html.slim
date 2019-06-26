@@ -8,6 +8,7 @@
               img alt="person's picture" src=bp.image height="90" width="90"/
             td.id = bp.id
             td.last_name = bp.last_name
+              a href="/banner_persons/#{bp.id}" target='_blank'
             td.first_name = bp.first_name
             td.hs = bp.houses.length
             - for h in bp.houses
