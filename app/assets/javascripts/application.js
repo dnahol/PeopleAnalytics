@@ -19,6 +19,7 @@
 
 //= require highcharts
 //= require highcharts/highcharts-more
+//= require materialize
 
 // more features, include as needed:
 //= require highcharts/modules/annotations
