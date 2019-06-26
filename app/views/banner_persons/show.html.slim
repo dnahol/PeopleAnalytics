@@ -99,7 +99,7 @@
     thead
       th
         tr
-          th 
+          th
           th Memberhsip ID
           th Banner Person ID
           th HSID
@@ -107,6 +107,7 @@
           th Loyalty Points
           th Handouts
           th Advisements
+          th Rate
     tbody
       - @table.each_with_index do |r, i|
         tr
@@ -118,6 +119,7 @@
           td.lpts = r["lpts"]
           td.handouts = r["hunits"]
           td.advisements = r["aunits"]
+          td.acc = @rates_col[i]
   .handouts-container
     | Handouts
   - if @handouts.any?
