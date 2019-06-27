@@ -2,17 +2,27 @@
   .banner-persons-container
     - if @banner_people.any?
       table#items
-        - for bp in @banner_people
+        thead
           tr
-            td.pic
-              img alt="person's picture" src=bp.image height="90" width="90"/
-            td.id = bp.id
-            td.last_name = bp.last_name
-              a href="/banner_persons/#{bp.id}" target='_blank'
-            td.first_name = bp.first_name
-            td.hs = bp.houses.length
-            - for h in bp.houses
-              td.house = h.name
+            th
+            th ID
+            th Last Name
+            th First Name
+            th Houses
+            th House
+        tbody
+          - for bp in @banner_people
+            tr
+              td.pic
+                img alt="person's picture" src=bp.image height="90" width="90"/
+              td.id = bp.id
+              td.last_name
+                a href="/banner_persons/#{bp.id}" #{bp.last_name}
+              td.first_name
+                a href="/banner_persons/#{bp.id}" #{bp.first_name}
+              td.hs = bp.houses.length
+              - for h in bp.houses
+                td.house = h.name
     - else
       p No items found. Please add some Banner People.
         Thank you!
