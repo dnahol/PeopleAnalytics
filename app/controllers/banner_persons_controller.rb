@@ -8,11 +8,15 @@ class BannerPersonsController < ApplicationController
     @banner_person = BannerPerson.find(params[:id])
     @handouts = @banner_person.handouts
     gon.handouts = []
-    @handouts.each{|h| gon.handouts.push( h.units )}
+    @handouts.each{|h| gon.handouts.push( [ h.date, h.units ] )}
 
     @loyalty_points = @banner_person.loyalty_points
     gon.pts = []
-    @loyalty_points.each{|l| gon.pts.push( l.pts )}
+    @loyalty_points.each{|l| gon.pts.push([ l.date, l.pts ])}
+
+    p "gon.pts:"
+    p gon.pts.length
+    p gon.pts[0]
 
     @membership = nil
     i = 0
