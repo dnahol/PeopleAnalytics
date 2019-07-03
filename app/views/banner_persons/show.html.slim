@@ -114,8 +114,9 @@
           td.lpts = r["lpts"]
           td.handouts = r["hunits"]
           td.advisements = r["aunits"]
-          td.acc = @rates_col[i]
-  .handouts-container
+          td.acc = "#{@rates_col[i]} %"
+/ for debugging
+/  .handouts-container
     | Handouts
   - if @handouts.any?
     table#items
@@ -138,3 +139,4 @@
   - else
     p No items found. Please add some Loyalty Points.
       Thank you!
+/!

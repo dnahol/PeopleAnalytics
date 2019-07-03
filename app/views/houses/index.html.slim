@@ -1,16 +1,30 @@
-.center(style="text-align: center;")
+.center
   .house-container
     - if @houses.any?
       table#items
-        - for h in @houses
+        thead
           tr
-            td.id = h.id
-            td.name = h.name
-            td.loyalty = h.loyalty_range
-            td.bs = h.banner_people.length
-            - for bp in h.banner_people
-              td.first = bp.first_name
-              td.last = bp.last_name
+            th HSID
+            th House Name
+            th Loyalty Range
+            th # of Banner People
+            th First Name
+            th Last Name
+        tbody
+          - for h in @houses
+            tr
+              td.id = h.id
+              td.name = h.name
+              td.loyalty = h.loyalty_range
+              td.bs = h.banner_people.length
+              - for bp in h.banner_people
+                tr
+                  td.id =
+                  td.name =
+                  td.loyalty =
+                  td.bs = 
+                  td.first = bp.first_name
+                  td.last = bp.last_name
     - else
       p No items found. Please add some Banner People.
         Thank you!

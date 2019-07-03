@@ -14,7 +14,8 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require rails-ujs
-//= require turbolinks
+// Disabling turbolinks due to infinite recursion bug in turbolinks
+// require turbolinks
 //= require_tree .
 
 //= require highcharts

@@ -31,8 +31,7 @@ class BannerPersonsController < ApplicationController
 
     @table = ActiveRecord::Base.connection.execute("
           SELECT COALESCE(l.date, h.date, a.date) AS cdate,
-          l.pts AS lpts, h.units AS hunits, a.units AS aunits, a.accepted AS acc,
-          0 AS rate
+          l.pts AS lpts, h.units AS hunits, a.units AS aunits, a.accepted AS acc
           FROM (SELECT * FROM loyalty_points WHERE membership_id = #{@membership.id}) l
           FULL OUTER JOIN (SELECT * FROM handouts WHERE membership_id = #{@membership.id}) h
             ON l.date = h.date
@@ -42,6 +41,7 @@ class BannerPersonsController < ApplicationController
           ")
 
     @adv_rates = Accepted.rate(table: @table)
+    p @adv_rates
 
     @rates_col = []
     cur_rate = 0.0
@@ -49,7 +49,7 @@ class BannerPersonsController < ApplicationController
       if @adv_rates[r["cdate"]]
         cur_rate = @adv_rates[r["cdate"]]
       end
-      @rates_col.push(cur_rate)
+      @rates_col.push(100 * cur_rate)
     end
 
 

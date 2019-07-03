@@ -2,8 +2,8 @@ module Accepted
   extend ActiveSupport::Concern
   def self.rate(table:)
     uniqs = {}
-    num = 0
-    denom = 0
+    num = 0.0
+    denom = 0.0
     last_a = nil
 
     table.each do |r, i|
@@ -13,9 +13,9 @@ module Accepted
       unless a == nil
 
         unless last_a == nil
-          uniqs[ last_a[0] ] = num / denom
-          num = 0
-          denom = 0
+          uniqs[ last_a[0] ] = num.to_f / denom
+          num = 0.0
+          denom = 0.0
         end
 
         last_a = [ r["cdate"], a ]
@@ -33,7 +33,7 @@ module Accepted
 
     unless last_a == nil
       if uniqs[ last_a[0] ] == nil
-        uniqs[ last_a[0] ] = num / denom
+        uniqs[ last_a[0] ] = num.to_f / denom
       end
     end
 
