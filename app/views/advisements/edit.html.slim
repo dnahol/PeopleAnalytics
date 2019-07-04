@@ -1,0 +1,22 @@
+.center(style="text-align: center;")
+  .container
+    h1 =@advisement.membership.banner_person.last_name
+    h2 =@advisement.membership.banner_person.id
+    br
+    table#items
+      thead
+        tr.row
+          th.col.s3 Advisement ID
+          th.col.s3 Date
+          th.col.s3 Units
+          th.col.s3 New Units
+      tbody
+        tr.row
+          td.id.col.s3 = @advisement.id
+          td.date.col.s3 = @advisement.date
+          td.units.col.s3 = @advisement.units
+          td.col.s3
+            = form_for @advisement, html: {step: "100"} do |a|
+              .input-field
+                = a.number_field :units, min: 200, max: 20000, step: 100, placeholder: @advisement.units
+                = a.button class: "btn waves-effect waves-light"

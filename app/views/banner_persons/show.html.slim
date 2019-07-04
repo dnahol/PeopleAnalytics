@@ -2,8 +2,6 @@
   h1 #{@banner_person.first_name} #{@banner_person.last_name}
   #chart-container(style="width:100%; height:400px;")
     javascript:
-      console.log('gon.pts:', gon.pts[0][0])
-      console.log('gon.handouts:', gon.handouts[0][0])
       for(var i = 0; i < gon.pts.length; i++) {
         let strs = gon.pts[i][0].split('-')
         gon.pts[i][0] = Date.UTC(parseInt(strs[0]), parseInt(strs[1]) -1, parseInt(strs[2]))
@@ -12,9 +10,6 @@
         let strs = gon.handouts[i][0].split('-')
         gon.handouts[i][0] = Date.UTC(parseInt(strs[0]), parseInt(strs[1]) -1, parseInt(strs[2]))
       }
-      console.log('gon.pts:', gon.pts[0][0])
-      console.log('gon.handouts:', gon.handouts[0][0])
-
       document.addEventListener('DOMContentLoaded', function () {
         var myChart = Highcharts.chart('chart-container', {
           chart: {
@@ -88,33 +83,30 @@
           }]
         })
       });
-  .table-container
+  .container
     h4 Enhanced View Mode
-  table#items
-    thead
-      th
-        tr
-          th
-          th Memberhsip ID
-          th Banner Person ID
-          th HSID
-          th Date
-          th Loyalty Points
-          th Handouts
-          th Advisements
-          th Rate
-    tbody
-      - @table.each_with_index do |r, i|
-        tr
-          td.i = i
-          td.id = @membership.id
-          td.id = @banner_person.id
-          td.hsid = @membership.house_id
-          td.date = r["cdate"]
-          td.lpts = r["lpts"]
-          td.handouts = r["hunits"]
-          td.advisements = r["aunits"]
-          td.acc = "#{@rates_col[i]} %"
+    table#items
+      thead
+        th
+          tr
+            th ID
+            th HSID
+            th Date
+            th Loyalty Points
+            th Handouts
+            th Advisements
+            th Rate
+      tbody
+        - @table.each_with_index do |r, i|
+          tr
+            td.id = @banner_person.id
+            td.hsid = @membership.house_id
+            td.date = r["cdate"]
+            td.lpts = r["lpts"]
+            td.handouts = r["hunits"]
+            td.advisements
+              a href="/advisements/#{r["aid"]}/edit" #{r["aunits"]}
+            td.acc = "#{@rates_col[i]} %"
 / for debugging
 /  .handouts-container
     | Handouts

@@ -1,14 +1,19 @@
 .center(style="text-align: center;")
-  .advisements-container
+  .container
     br
     - if @advisements.any?
       table#items
-        - for a in @advisements
+        thead
           tr
-            td.date = a.date
-            td.id = a.id
-            td.units = a.units
-            td.accepted = a.accepted
+            th Date
+            th Advisement ID
+            th Units
+        tbody
+          - for a in @advisements
+            tr
+              td.date = a.date
+              td.id = a.id
+              td.units = a.units
     - else
       p No items found. Please add some Advisements or Accepted.
         Thank you!

@@ -6,18 +6,6 @@ class BannerPersonsController < ApplicationController
   end
   def show
     @banner_person = BannerPerson.find(params[:id])
-    @handouts = @banner_person.handouts
-    gon.handouts = []
-    @handouts.each{|h| gon.handouts.push( [ h.date, h.units ] )}
-
-    @loyalty_points = @banner_person.loyalty_points
-    gon.pts = []
-    @loyalty_points.each{|l| gon.pts.push([ l.date, l.pts ])}
-
-    p "gon.pts:"
-    p gon.pts.length
-    p gon.pts[0]
-
     @membership = nil
     i = 0
     while @membership == nil && i < @banner_person.memberships.length
@@ -26,12 +14,10 @@ class BannerPersonsController < ApplicationController
       end
       i+=1
     end
-    p "membership:"
-    p @membership
-
     @table = ActiveRecord::Base.connection.execute("
           SELECT COALESCE(l.date, h.date, a.date) AS cdate,
-          l.pts AS lpts, h.units AS hunits, a.units AS aunits, a.accepted AS acc
+          l.pts AS lpts, h.units AS hunits, a.units AS aunits, a.id AS aid,
+          h.date AS hdate, l.date AS ldate
           FROM (SELECT * FROM loyalty_points WHERE membership_id = #{@membership.id}) l
           FULL OUTER JOIN (SELECT * FROM handouts WHERE membership_id = #{@membership.id}) h
             ON l.date = h.date
@@ -39,20 +25,27 @@ class BannerPersonsController < ApplicationController
             ON COALESCE(l.date, h.date) = a.date
           ORDER BY cdate ASC;
           ")
-
+    @handouts = @banner_person.handouts
+    @loyalty_points = @banner_person.loyalty_points
+    gon.handouts = []
+    gon.pts = []
+    @table.each{|r|
+      if r["hdate"]
+        gon.handouts.push( [ r["hdate"], r["hunits"] ] )
+      end
+      if r["ldate"]
+        gon.pts.push( [ r["ldate"], r["lpts"] ] )
+      end
+    }
     @adv_rates = Accepted.rate(table: @table)
-    p @adv_rates
-
     @rates_col = []
     cur_rate = 0.0
     @table.each_with_index do |r, i|
       if @adv_rates[r["cdate"]]
         cur_rate = @adv_rates[r["cdate"]]
       end
-      @rates_col.push(100 * cur_rate)
+      @rates_col.push( '%.2f' % (100 * cur_rate) )
     end
-
-
   end
   def update
   end
