@@ -1,7 +1,7 @@
 .center(style="text-align: center;")
   .handouts-container
   - if @handouts.any?
-    table#items
+    table
       - for h in @handouts
         tr
           td.date = h.date

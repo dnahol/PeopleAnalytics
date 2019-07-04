@@ -1,47 +1,47 @@
-.center
-  .container
-    - if @houses.any?
-      table.striped#items
-        thead
+.container
+  - if @houses.any?
+    table.striped
+      thead
+        tr
+          th HSID
+          th House Name
+          th Loyalty Range
+          th # of Banner People
+          th.center House Image
+          th
+      tbody
+        - for h in @houses
           tr
-            th HSID
-            th House Name
-            th Loyalty Range
-            th # of Banner People
-            th.center House Image
-            th
-        tbody
-          - for h in @houses
-            tr
-              td.id = h.id
-              td.name = h.name
-              td.loyalty = h.loyalty_range
-              td.bs = h.banner_people.length
-              td.pic.right
-                img alt="house image" src=h.image height="100" width="200"/
-              td
-            tr
-              td.space
-              td.space
-              td.space
-              td.space
-              th.center Names
-              th
-            tr
-              td.space
-              td.space
-              td.space
-              td.space
-              th Last
-              th First
-              - for bp in h.banner_people
-                tr
-                  td.id =
-                  td.name =
-                  td.loyalty =
-                  td.bs =
-                  td.last = bp.last_name
-                  td.first = bp.first_name
-    - else
-      p No items found. Please add some Banner People.
-        Thank you!
+            td.id = h.id
+            td.name = h.name
+            td.loyalty = h.loyalty_range
+            td.bs = h.banner_people.length
+            td.pic.right
+              img alt="house image" src=h.image height="100" width="200"/
+          tr
+            td
+              ul.collapsible
+                li
+                  .collapsible-header
+                    i.material-icons expand_more
+                    |  Banner People
+                  .collapsible-body
+                    table.striped
+                      thead
+                        tr
+                          th ID
+                          th Last Name
+                          th First Name
+                      tbody
+                        - for bp in h.banner_people
+                          tr
+                            td.id
+                              a href="/banner_persons/#{bp.id}" #{bp.id}
+                            td.last_name
+                              a href="/banner_persons/#{bp.id}" #{bp.last_name}
+                            td.first_name
+                              a href="/banner_persons/#{bp.id}" #{bp.first_name}
+
+  - else
+    p No items found. Please add some Houses.
+      Thank you!

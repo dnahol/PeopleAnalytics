@@ -83,31 +83,61 @@
           }]
         })
       });
-  .container
-    h4 Enhanced View Mode
-    table.striped#items
-      thead
-        tr
-          th ID
-          th HSID
-          th Date
-          th Loyalty Points
-          th Handouts
-          th Advisements
-          th Rate
-      tbody
-        - @membership.table.each_with_index do |r, i|
-          tr
-            td.id = @banner_person.id
-            td.hsid = @membership.house_id
-            td.date = r["cdate"]
-            td.lpts = r["lpts"]
-            td.handouts = r["hunits"]
-            -if r["aunits"] != nil
-              td.advisements
-                p #{r["aunits"]  }
-                a.btn-floating(href="/advisements/#{r["aid"]}/edit")
-                  i.material-icons edit
-            -else
-              td.advisements = ' '
-            td.acc = "#{@rates_col[i]} %"
+
+  ul.collapsible.popout#collapsed_links(data-collapsible="expandable")
+    li.active
+      .collapsible-header
+        i.material-icons expand_more
+        |  Regular View Mode
+      .collapsible-body
+        table.striped
+          thead
+            tr
+              th Date
+              th Loyalty Points
+              th Handouts
+              th Advisements
+          tbody
+            - @membership.table.each_with_index do |r, i|
+              tr
+                td.date = r["cdate"]
+                td.lpts = r["lpts"]
+                td.handouts = r["hunits"]
+                -if r["aunits"] != nil
+                  td.advisements
+                    p #{r["aunits"]  }
+                    a.btn-floating(href="/advisements/#{r["aid"]}/edit")
+                      i.material-icons edit
+                -else
+                  td.advisements = ' '
+    li
+      .collapsible-header
+        i.material-icons table_chart
+        |  Enhanced View Mode
+      .collapsible-body
+        table.striped
+          thead
+            tr
+              th ID
+              th HSID
+              th Date
+              th Loyalty Points
+              th Handouts
+              th Advisements
+              th Rate
+          tbody
+            - @membership.table.each_with_index do |r, i|
+              tr
+                td.id = @banner_person.id
+                td.hsid = @membership.house_id
+                td.date = r["cdate"]
+                td.lpts = r["lpts"]
+                td.handouts = r["hunits"]
+                -if r["aunits"] != nil
+                  td.advisements
+                    p #{r["aunits"]  }
+                    a.btn-floating(href="/advisements/#{r["aid"]}/edit")
+                      i.material-icons edit
+                -else
+                  td.advisements = ' '
+                td.acc = "#{@rates_col[i]} %"
