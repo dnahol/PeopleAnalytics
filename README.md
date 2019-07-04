@@ -21,6 +21,7 @@ AND:
 * Engineering principles:
   * MVC
   * Fat Models, Skinny Controllers
+  * Keep Accepted calculations in Concern methods
   * Ruby Controller Actions Conventions:
     * 7 types of Actions:
       * Index: List all objects

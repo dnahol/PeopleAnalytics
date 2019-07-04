@@ -111,29 +111,3 @@
             -else
               td.advisements = ' '
             td.acc = "#{@rates_col[i]} %"
-/ for debugging
-/
-  .handouts-container
-    | Handouts
-  - if @hts_pts["hts"].any?
-    table#items
-      - for h in @hts_pts["hts"]
-        tr
-          td.date = h[0]
-          td.units = h[1]
-  - else
-    p No items found. Please add some Handouts.
-      Thank you!
-
-  .loyalty_points-container
-    | Loyalty Points
-  - if @hts_pts["pts"].any?
-    table#items
-      - for l in @hts_pts["pts"]
-        tr
-          td.date = l[0]
-          td.units = l[1]
-  - else
-    p No items found. Please add some Loyalty Points.
-      Thank you!
-/!

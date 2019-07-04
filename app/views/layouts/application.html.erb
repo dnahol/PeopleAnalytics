@@ -10,16 +10,18 @@
 </head>
 
 <body>
-  <nav>
-    <div class="nav-wrapper teal accent-3">
-      <a href="#!" class="brand-logo center">Banner Systems</a>
-      <ul class="left hide-on-med-and-down">
-        <li class="active"><a href="/">Banner Persons</a></li>
-        <li><a href="/houses">Houses</a></li>
-        <li><a href="/house_masters/intro">House Masters</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper teal accent-3">
+        <a href="#!" class="brand-logo center">Banner Systems</a>
+        <ul class="left hide-on-med-and-down">
+          <li class="<%= 'active' if params[:controller] == 'banner_persons' %>"><a href="/">Banner Persons</a></li>
+          <li class="<%= 'active' if params[:controller] == 'houses' %>"><a href="/houses">Houses</a></li>
+          <li class="<%= 'active' if params[:controller] == 'house_masters' %>"><a href="/house_masters/intro">House Masters</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
   <%= yield %>
 </body>
 </html>

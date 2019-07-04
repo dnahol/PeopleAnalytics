@@ -4,3 +4,9 @@ $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+// nav ul li.active {
+//   background-color: #1BD1A3;
+//   color: #FFFFFF;
+//   cursor: default;
+// }
