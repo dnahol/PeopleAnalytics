@@ -4,7 +4,7 @@ class Advisement < ApplicationRecord
   after_initialize :set_accepted
 
   def set_accepted
-    # self.accepted = Accepted.rate(table: self.membership.@table)
+    Accepted.rate(advisement: self)
   end
 
 end

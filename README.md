@@ -1,17 +1,26 @@
-# Quick rails app w/ graph
+# Rails app w/ graph
 
-### Technologies explored (check the this skeleton)
+### Technologies explored
 
 * **Ruby** ('2.5.1')
-* **Ruby on Rails** ('~> 5.1.6.2') — with Turbolinks
+* **Ruby on Rails** ('~> 5.1.6.2') — disabled Turbolinks
 * **Postgres** ('~> 11.2')
+* **ActiveRecord**
+* **Slim Template**
 * **HighCharts JS** —
   [here's an example][highcharts example]
+* **Gon**
 * **Faker**
+* **LoremFlickr**
+* **Materialize Sass**
+* **Material Icons**
+* **Rails Action View Form Helpers** -including form_for
+* **HTML5 Form Validation**
 
 AND:
 * Engineering principles:
   * MVC
+  * Fat Models, Skinny Controllers
   * Ruby Controller Actions Conventions:
     * 7 types of Actions:
       * Index: List all objects
@@ -130,7 +139,7 @@ x  * Ditto above for `date`. Don't hack around with `created_at` or anything.
   * Ensure the high charts function is clean and makes sense for this mini app
     * Leaning heavily on docs examples is fine: just ensure good, unique code
 x  * Learn some new things
-:)  * Have fun!
+x :)  * Have fun!
 
 ### Helpful checklist
 
@@ -143,7 +152,7 @@ x  * Learn some new things
     decisions/actions where you have something to say.
   * [ ] **Include screenshots** (in that readme) of what your mini app looks
     like!
-  * [ ] **Mention any other tech** you pulled in to help you if you did so.
+  * [x] **Mention any other tech** you pulled in to help you if you did so.
   * [x] Read this challenge readme.
 
 

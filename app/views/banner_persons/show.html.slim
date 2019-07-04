@@ -85,49 +85,54 @@
       });
   .container
     h4 Enhanced View Mode
-    table#items
+    table.striped#items
       thead
-        th
-          tr
-            th ID
-            th HSID
-            th Date
-            th Loyalty Points
-            th Handouts
-            th Advisements
-            th Rate
+        tr
+          th ID
+          th HSID
+          th Date
+          th Loyalty Points
+          th Handouts
+          th Advisements
+          th Rate
       tbody
-        - @table.each_with_index do |r, i|
+        - @membership.table.each_with_index do |r, i|
           tr
             td.id = @banner_person.id
             td.hsid = @membership.house_id
             td.date = r["cdate"]
             td.lpts = r["lpts"]
             td.handouts = r["hunits"]
-            td.advisements
-              a href="/advisements/#{r["aid"]}/edit" #{r["aunits"]}
+            -if r["aunits"] != nil
+              td.advisements
+                p #{r["aunits"]  }
+                a.btn-floating(href="/advisements/#{r["aid"]}/edit")
+                  i.material-icons edit
+            -else
+              td.advisements = ' '
             td.acc = "#{@rates_col[i]} %"
 / for debugging
-/  .handouts-container
+/
+  .handouts-container
     | Handouts
-  - if @handouts.any?
+  - if @hts_pts["hts"].any?
     table#items
-      - for h in @handouts
+      - for h in @hts_pts["hts"]
         tr
-          td.date = h.date
-          td.units = h.units
+          td.date = h[0]
+          td.units = h[1]
   - else
     p No items found. Please add some Handouts.
       Thank you!
 
   .loyalty_points-container
     | Loyalty Points
-  - if @loyalty_points.any?
+  - if @hts_pts["pts"].any?
     table#items
-      - for l in @loyalty_points
+      - for l in @hts_pts["pts"]
         tr
-          td.date = l.date
-          td.units = l.pts
+          td.date = l[0]
+          td.units = l[1]
   - else
     p No items found. Please add some Loyalty Points.
       Thank you!

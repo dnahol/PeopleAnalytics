@@ -2,18 +2,20 @@
   .container
     br
     - if @advisements.any?
-      table#items
+      table.striped#items
         thead
           tr
             th Date
             th Advisement ID
             th Units
+            th Accepted
         tbody
           - for a in @advisements
             tr
               td.date = a.date
               td.id = a.id
               td.units = a.units
+              td.acc = "#{'%.2f' % (100 * a.accepted)} %"
     - else
       p No items found. Please add some Advisements or Accepted.
         Thank you!

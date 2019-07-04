@@ -17,10 +17,13 @@ Handout.destroy_all
 
 houses = []
 4.times do |index|
+  hname =
+  Faker::Creature::Animal.unique.name
   house =
   House.create!(
-    name: Faker::Creature::Animal.unique.name,
-    loyalty_range: [Faker::Number.within(9..11), Faker::Number.within(12..18)]
+    name: hname,
+    loyalty_range: [Faker::Number.within(9..11), Faker::Number.within(12..18)],
+    image: Faker::LoremFlickr.image("200x100", ["#{hname}?lock=#{index}"])
   )
   houses << house
 end
@@ -32,7 +35,7 @@ end
   BannerPerson.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    image: Faker::LoremFlickr.image("100x100", ["person?#{index}"])
+    image: Faker::LoremFlickr.image("100x100", ["person,portrait/all?lock=#{index}"])
   )
   # p "Created BannerPeople"
   house = houses[index % 4]

@@ -3,17 +3,19 @@
     h1 =@advisement.membership.banner_person.last_name
     h2 =@advisement.membership.banner_person.id
     br
-    table#items
+    table.striped#items
       thead
         tr.row
-          th.col.s4 Advisement ID
-          th.col.s4 Date
-          th.col.s4 Units
+          th.col.s3 Advisement ID
+          th.col.s3 Date
+          th.col.s3 Units
+          th.col.s3 Accepted
       tbody
         tr.row
-          td.id.col.s4 = @advisement.id
-          td.date.col.s4 = @advisement.date
-          td.units.col.s4 = @advisement.units
+          td.id.col.s3 = @advisement.id
+          td.date.col.s3 = @advisement.date
+          td.units.col.s3 = @advisement.units
+          td.acc.col.s3 = "#{'%.2f' % (100 * @advisement.set_accepted)} %"
     br
     a.btn.waves-effect.waves-light(href="/banner_persons/#{@advisement.membership.banner_person.id}/")
       i.material-icons.left arrow_back

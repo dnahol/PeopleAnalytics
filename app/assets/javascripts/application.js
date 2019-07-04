@@ -11,12 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require rails-ujs
+//= require_tree .
+
 // Disabling turbolinks due to infinite recursion bug in turbolinks
 // require turbolinks
-//= require_tree .
+// require jquery.turbolinks
+
 
 //= require highcharts
 //= require highcharts/highcharts-more

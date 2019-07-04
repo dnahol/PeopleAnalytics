@@ -3,20 +3,26 @@
     h1 =@advisement.membership.banner_person.last_name
     h2 =@advisement.membership.banner_person.id
     br
-    table#items
+    table.striped#items
       thead
         tr.row
-          th.col.s3 Advisement ID
-          th.col.s3 Date
-          th.col.s3 Units
-          th.col.s3 New Units
+          th.col.s2 Advisement ID
+          th.col.s2 Date
+          th.col.s2 Units
+          th.col.s2 New Units
+          th.col.s2 Accepted
       tbody
         tr.row
-          td.id.col.s3 = @advisement.id
-          td.date.col.s3 = @advisement.date
-          td.units.col.s3 = @advisement.units
-          td.col.s3
+          td.id.col.s2 = @advisement.id
+          td.date.col.s2 = @advisement.date
+          td.units.col.s2 = @advisement.units
+          td.col.s2
             = form_for @advisement, html: {step: "100"} do |a|
-              .input-field
                 = a.number_field :units, min: 200, max: 20000, step: 100, placeholder: @advisement.units
                 = a.button class: "btn waves-effect waves-light"
+            br
+          td.acc.col.s2 = "#{'%.2f' % (100 * @advisement.accepted)} %"
+  br
+  a.btn.waves-effect.waves-light(href="/banner_persons/#{@advisement.membership.banner_person.id}/")
+    i.material-icons.left arrow_back
+    |  back to banner person
