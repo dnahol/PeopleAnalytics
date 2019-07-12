@@ -85,34 +85,9 @@
       });
 
   ul.collapsible.popout#collapsed_links(data-collapsible="expandable")
-    li.active
-      .collapsible-header
-        i.material-icons expand_more
-        |  Regular View Mode
-      .collapsible-body
-        table.striped
-          thead
-            tr
-              th Date
-              th Loyalty Points
-              th Handouts
-              th Advisements
-          tbody
-            - @membership.table.each_with_index do |r, i|
-              tr
-                td.date = r["cdate"]
-                td.lpts = r["lpts"]
-                td.handouts = r["hunits"]
-                -if r["aunits"] != nil
-                  td.advisements
-                    p #{r["aunits"]  }
-                    a.btn-floating(href="/advisements/#{r["aid"]}/edit")
-                      i.material-icons edit
-                -else
-                  td.advisements = ' '
     li
       .collapsible-header
-        i.material-icons table_chart
+        i.material-icons expand_more
         |  Enhanced View Mode
       .collapsible-body
         table.striped
@@ -141,3 +116,28 @@
                 -else
                   td.advisements = ' '
                 td.acc = "#{@rates_col[i]} %"
+    li.active
+      .collapsible-header
+        i.material-icons table_chart
+        |  Regular View Mode
+      .collapsible-body
+        table.striped
+          thead
+            tr
+              th Date
+              th Loyalty Points
+              th Handouts
+              th Advisements
+          tbody
+            - @membership.table.each_with_index do |r, i|
+              tr
+                td.date = r["cdate"]
+                td.lpts = r["lpts"]
+                td.handouts = r["hunits"]
+                -if r["aunits"] != nil
+                  td.advisements
+                    p #{r["aunits"]  }
+                    a.btn-floating(href="/advisements/#{r["aid"]}/edit")
+                      i.material-icons edit
+                -else
+                  td.advisements = ' '
