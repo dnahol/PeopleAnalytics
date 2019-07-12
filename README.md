@@ -47,11 +47,12 @@ AND:
 
 
 ### BannerPerson Show View
+Uses `materialize-sass 1.0.0`, `material_icons`, `gon` and `highcharts-rails`
+
 
 ![Show View Graph](/app/assets/images/show.jpg)
 
 #### BannerPerson Show View - Top (Graph)
-Used `gon` and `highcharts-rails`
 
 ![Show View Graph](/app/assets/images/showTop.jpg)
 
@@ -67,33 +68,75 @@ MVP:
 
 
 
-```
-
-  ┌──────────────────────────────────────────────────────────────────────┐
-  │                                                                      │▒
-  │       ╔═══════════╗                        .●◟                       │▒
-  │       ║ ...       ║                      ,'   ╰◟                     │▒
-  │       ╚═════════▿═╝                    ,'       `╮                   │▒
-  │                 ●─.          ●────────●           ╲                  │▒
-  │                ◜   `─.    ,─'                      `◟,               │▒
-  │               ╱       ╲  ╱                            ╲              │▒
-  │   ●────●     ╱         ◝●                              ●             │▒
-  │         ╲   ╱                                                 █  █   │▒
-  │          ╲ ╱                                          █  █    █  █   │▒
-  │           ●   █                                       █  █    █  █   │▒
-  │      █  █  █  █    █  █      █  █ █      █  █         █  █    █  █   │▒
-  │      █  █  █  █    █  █      █  █ █      █  █         █  █    █  █   │▒
-  │      █  █  █  █    █  █      █  █ █      █  █         █  █    █  █   │▒
-  └──────────────────────────────────────────────────────────────────────┘▒
-   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-
-```
-
-Source:
-
-
 #### BannerPerson Show View - Bottom (Table)
+
+Toggles between Regular and Enhanced Show View using Google Materialize front end collapsible component
+https://materializecss.com/collapsible.html
+
+##### Regular view mode (Default on page load):
+
 ![Show View Graph](/app/assets/images/showBottom.jpg)
+
+##### Enhanced view mode:
+![Show View Graph](/app/assets/images/showBottomEnhanced.jpg)
+
+
+#### BannerPerson Edit Advisements
+Can Edit advisements using Icon in BannerPerson Show View Table (both Regular and Enhanced views).
+
+![Advisement Edit](/app/assets/images/advEdit.jpg)
+
+After submitting an edit, view is redirected to Advisement Show view. This includes an updated Accepted % Rate.
+![Advisement Show](/app/assets/images/advShow.jpg)
+
+**Queries for Table and Graph Data**
+Kept in mind the MVC principle of fat models and skinny controllers.
+
+Two main instance methods on the Membership model get my table and graph data.
+For Table: table
+For Graph: sorted_hts_pts 
+
+Membership Model `/app/models/membership.rb`
+```ruby
+class Membership < ApplicationRecord
+
+  belongs_to :house
+  belongs_to :banner_person
+  has_many :loyalty_points
+  has_many :advisements
+  has_many :handouts
+
+  def table
+    ActiveRecord::Base.connection.execute("
+      SELECT COALESCE(l.date, h.date, a.date) AS cdate,
+      l.pts AS lpts, h.units AS hunits, a.units AS aunits, a.id AS aid,
+      l.date AS ldate, h.date AS hdate, a.date AS adate
+      FROM (SELECT * FROM loyalty_points WHERE membership_id = #{self.id}) l
+      FULL OUTER JOIN (SELECT * FROM handouts WHERE membership_id = #{self.id}) h
+        ON l.date = h.date
+      FULL OUTER JOIN (SELECT * FROM advisements WHERE membership_id = #{self.id}) a
+        ON COALESCE(l.date, h.date) = a.date
+      ORDER BY cdate ASC;
+      ")
+  end
+
+  def sorted_hts_pts
+    handouts = []
+    pts = []
+    adv = []
+    self.table.each{|r|
+      if r["hdate"]
+        handouts.push( [ r["hdate"], r["hunits"] ] )
+      end
+      if r["ldate"]
+        pts.push( [ r["ldate"], r["lpts"] ] )
+      end
+    }
+    return { 'hts' => handouts, 'pts' => pts }
+  end
+
+end
+```
 
 **% Accepted**
 Accepted is calculated in a Concern
@@ -166,13 +209,6 @@ module Accepted
 
 end
 ```
-##### Enhanced view mode:
-![Show View Graph](/app/assets/images/showBottomEnhanced.jpg)
-
-##### Regular view mode (allow toggle between two table view modes):
-
-
-##### Table display values
 
 
 ### Some Advice
