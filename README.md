@@ -23,9 +23,9 @@ AND:
 * Engineering principles:
   * MVC
   * Fat Models, Skinny Controllers
-  * Keep Accepted calculations in Concern methods
-  * Ruby Controller Actions Conventions:
-    * 7 types of Actions:
+  * Rails Conventions:
+    * Keep Accepted calculations in Concern methods
+    * 7 types of Controller Actions:
       * Index: List all objects
         HTTP: GET
       * Show: Show one object
@@ -41,60 +41,17 @@ AND:
       * Delete: Delete one object
         HTTP: DELETE
 ---
-
+##Models
 ### Schema Specifics
 
 
-
-### BannerPerson Show View
-Uses `materialize-sass 1.0.0`, `material_icons`, `gon` and `highcharts-rails`
-
-
-![Show View Graph](/app/assets/images/show.jpg)
-
-#### BannerPerson Show View - Top (Graph)
-
-![Show View Graph](/app/assets/images/showTop.jpg)
-
-
-MVP:
-
-
-  Used this example as a guide:
-  2018 Dosis Demo for tracking anemia HB levels against
-  dose of medication
-
-  ![Graph from Demo](/app/assets/images/demoGraph.jpg)
-
-
-
-#### BannerPerson Show View - Bottom (Table)
-
-Toggles between Regular and Enhanced Show View using Google Materialize front end collapsible component
-https://materializecss.com/collapsible.html
-
-##### Regular view mode (Default on page load):
-
-![Show View Graph](/app/assets/images/showBottom.jpg)
-
-##### Enhanced view mode:
-![Show View Graph](/app/assets/images/showBottomEnhanced.jpg)
-
-
-#### BannerPerson Edit Advisements
-Can Edit advisements using Icon in BannerPerson Show View Table (both Regular and Enhanced views).
-
-![Advisement Edit](/app/assets/images/advEdit.jpg)
-
-After submitting an edit, view is redirected to Advisement Show view. This includes an updated Accepted % Rate.
-![Advisement Show](/app/assets/images/advShow.jpg)
 
 **Queries for Table and Graph Data**
 Kept in mind the MVC principle of fat models and skinny controllers.
 
 Two main instance methods on the Membership model get my table and graph data.
 For Table: table
-For Graph: sorted_hts_pts 
+For Graph: sorted_hts_pts
 
 Membership Model `/app/models/membership.rb`
 ```ruby
@@ -210,6 +167,49 @@ module Accepted
 end
 ```
 
+##Views
+### BannerPerson Show View
+Uses `materialize-sass 1.0.0`, `material_icons`, `gon` and `highcharts-rails`
+
+
+![Show View Graph](/app/assets/images/show.jpg)
+
+#### BannerPerson Show View - Top (Graph)
+
+![Show View Graph](/app/assets/images/showTop.jpg)
+
+
+Used this example as a guide:
+2018 Dosis Demo for tracking anemia HB levels against
+dose of medication
+
+![Graph from Demo](/app/assets/images/demoGraph.jpg)
+
+
+#### BannerPerson Show View - Bottom (Table)
+
+Toggles between Regular and Enhanced Show View using Google Materialize front end collapsible component
+https://materializecss.com/collapsible.html
+
+##### Regular view mode (Default on page load):
+
+![Show View Graph](/app/assets/images/showBottom.jpg)
+
+##### Enhanced view mode:
+![Show View Graph](/app/assets/images/showBottomEnhanced.jpg)
+
+
+#### BannerPerson Edit Advisements
+Can Edit advisements using Icon in BannerPerson Show View Table (both Regular and Enhanced views).
+
+![Advisement Edit](/app/assets/images/advEdit.jpg)
+
+After submitting an edit, view is redirected to Advisement Show view. This includes an updated Accepted % Rate.
+![Advisement Show](/app/assets/images/advShow.jpg)
+
+
+##Controllers
+
 
 ### Some Advice
 x  * For the IDs, don't mess with the primary `id` key that is made for you in a
@@ -233,6 +233,3 @@ x :)  * Have fun!
     like!
   * [x] **Mention any other tech** you pulled in to help you if you did so.
   * [x] Read this challenge readme.
-
-
-### Our Part
