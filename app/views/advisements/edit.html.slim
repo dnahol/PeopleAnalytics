@@ -21,7 +21,7 @@
                 = a.number_field :units, min: 200, max: 20000, step: 100, placeholder: @advisement.units
                 = a.button class: "btn waves-effect waves-light"
             br
-          td.acc.col.s2 = "#{'%.2f' % (100 * @advisement.accepted)} %"
+          td.acc.col.s2 = "#{'%.2f' % (100 * @advisement.set_accepted)} %"
   br
   a.btn.waves-effect.waves-light(href="/banner_persons/#{@advisement.membership.banner_person.id}/")
     i.material-icons.left arrow_back

@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20190704091039) do
     t.bigint "membership_id"
     t.date "date"
     t.integer "units"
-    t.decimal "accepted"
     t.index ["membership_id"], name: "index_advisements_on_membership_id"
   end
 
