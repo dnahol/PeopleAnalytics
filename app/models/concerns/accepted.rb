@@ -43,7 +43,7 @@ module Accepted
   def self.rate(advisement:)
     all = Accepted.rates(membership: advisement.membership)
     accepted = all[advisement.date.strftime("%F")]
-    
+
     return accepted
   end
 
