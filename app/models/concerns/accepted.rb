@@ -1,6 +1,9 @@
 module Accepted
   extend ActiveSupport::Concern
 
+
+
+
   def self.rates(membership:)
     uniqs = {}
     num = 0.0
@@ -41,6 +44,10 @@ module Accepted
   end
 
   def self.rate(advisement:)
+      
+  end
+
+  def self.calcRate(advisement:)
     all = Accepted.rates(membership: advisement.membership)
     accepted = all[advisement.date.strftime("%F")]
 
@@ -61,5 +68,6 @@ module Accepted
     end
     return col
   end
+
 
 end
