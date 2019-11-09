@@ -41,7 +41,7 @@ AND:
       * Delete: Delete one object
         HTTP: DELETE
 ---
-##Models
+## Models
 ### Schema Specifics
 
 
@@ -167,7 +167,7 @@ module Accepted
 end
 ```
 
-##Views
+## Views
 ### BannerPerson Show View
 Uses `materialize-sass 1.0.0`, `material_icons`, `gon` and `highcharts-rails`
 
@@ -227,9 +227,9 @@ x :)  * Have fun!
   * [x] Make an initial commit.
   * [x] **Commit frequently** and push at least daily at the end of each day.
   * [x] Maybe include some helpful seed data. `Faker` _could_ help you there.
-  * [ ] Please **provide a readme** (other than the orginal one) explaining your
+  * [x] Please **provide a readme** (other than the orginal one) explaining your
     decisions/actions where you have something to say.
-  * [ ] **Include screenshots** (in that readme) of what your mini app looks
+  * [x] **Include screenshots** (in that readme) of what your mini app looks
     like!
   * [x] **Mention any other tech** you pulled in to help you if you did so.
   * [x] Read this challenge readme.
