@@ -9,8 +9,7 @@
 * **Rails Action View Form Helpers** -including form_for
 * **HTML5 Form Validation**
 * **Slim Template**
-* **HighCharts JS** —
-  [here's an example][highcharts example]
+* **HighCharts JS** 
 * **Gon**
 * **Faker**
 * **LoremFlickr**
