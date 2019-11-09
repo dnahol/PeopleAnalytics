@@ -6,18 +6,16 @@
 * **Ruby on Rails** ('~> 5.1.6.2') — disabled Turbolinks
 * **Postgres** ('~> 11.2')
 * **ActiveRecord**
+* **Rails Action View Form Helpers** -including form_for
+* **HTML5 Form Validation**
 * **Slim Template**
 * **HighCharts JS** —
   [here's an example][highcharts example]
 * **Gon**
 * **Faker**
-
-Added by me:
 * **LoremFlickr**
 * **Materialize Sass**
 * **Material Icons**
-* **Rails Action View Form Helpers** -including form_for
-* **HTML5 Form Validation**
 
 AND:
 * Engineering principles:
