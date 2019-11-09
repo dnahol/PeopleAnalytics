@@ -208,28 +208,3 @@ After submitting an edit, view is redirected to Advisement Show view. This inclu
 ![Advisement Show](/app/assets/images/advShow.jpg)
 
 
-##Controllers
-
-
-### Some Advice
-x  * For the IDs, don't mess with the primary `id` key that is made for you in a
-  given table. Stick to a new column to hold the specific "id" requested.
-x  * Ditto above for `date`. Don't hack around with `created_at` or anything.
-  x * Ensure the high charts function is clean and makes sense for this mini app
-    x * Leaning heavily on docs examples is fine: just ensure good, unique code
-x  * Learn some new things
-x :)  * Have fun!
-
-### Helpful checklist
-
-  * [x] Instantiate a github repo when you begin the challenge.
-  * [x] Please **make the repo private**, and invite us.
-  * [x] Make an initial commit.
-  * [x] **Commit frequently** and push at least daily at the end of each day.
-  * [x] Maybe include some helpful seed data. `Faker` _could_ help you there.
-  * [x] Please **provide a readme** (other than the orginal one) explaining your
-    decisions/actions where you have something to say.
-  * [x] **Include screenshots** (in that readme) of what your mini app looks
-    like!
-  * [x] **Mention any other tech** you pulled in to help you if you did so.
-  * [x] Read this challenge readme.
